@@ -27,7 +27,7 @@ def width2(x):
     width = 0.5
     return np.sqrt(((x**2)/(1 + ((x**2)*width))))-x
 
-parser=argparse.ArgumentParser(description="Simulation demonstrating performance of a fountain code against ARQ.")
+parser=argparse.ArgumentParser(description="Generate Monte Carlo simulation graphs for Chapter 7 of the PhD Thesis, with dynamic graphs (alpha >=0).")
 
 parser.add_argument("dbpath", type=str, help="Path to sqlite database")
 args=parser.parse_args()
@@ -35,15 +35,8 @@ args=parser.parse_args()
 conn = sqlite3.connect(args.dbpath)
 cursor = conn.cursor()
 
-
-#nmax = [15, 15, 15, 15, 15, 15]
-#nmin = [5, 5, 5, 5, 7, 7]
-#beta=[1,2,4]
 p = ["0.900000", "0.800000", "0.700000", "0.600000", "0.500000", "0.400000"]
 pfloat = np.asarray(p, dtype=float)
-#qfloat = [0.125, 0.25, 0.375, 0.50, 0.625, 0.75]
-#big = 10
-
 
 ################################################################################
 #####################################GRAPHS#####################################
@@ -53,7 +46,6 @@ alpha=["0.000000", "0.250000", "0.500000", "0.750000", "1.000000"]
 alpha2=["0", "0.25", "0.5", "0.75", "1"]
 if input("Run: single beta=2, fixed n,p - timesteps vs alpha? y/return: ") == "y":
     for pi in p:
-#        for betai in range(3):
         for ni in range(6, 11):
             betai=0
             beta=2
@@ -70,7 +62,6 @@ if input("Run: single beta=2, fixed n,p - timesteps vs alpha? y/return: ") == "y
             ax.set_xticklabels(alpha2)
             plt.ylabel("Transmission time-steps")
             plt.xlabel("α")
-#        print(lin[0][0])
             plt.legend([bp["boxes"][0], lin[0]], ["Simulations", "Theory"])
             plt.show()
 
