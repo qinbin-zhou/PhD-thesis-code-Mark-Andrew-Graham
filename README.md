@@ -1,2 +1,2 @@
-# phd-thesis-code
-Code used to produce Monte Carlo simulations in my PhD thesis.
+PhD-thesis-code of Mark Andrew Graham
+Code used to produce Monte Carlo simulations in his PhD thesis.
